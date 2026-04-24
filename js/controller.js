@@ -35,3 +35,42 @@
 
 // HINT:
 // setInterval(functionName, 1000); will call functionName() every 1000 miliseconds.
+
+function tick() {
+    TimeModel.update();
+
+    var h = TimeModel.getHours();
+    var m = TimeModel.getMinutes();
+    var s = TimeModel.getSeconds();
+
+    AnalogueView.render(h, m, s);
+    DigitalView.render(h, m, s);
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    AnalogueView.init("analogClock");
+    DigitalView.init("digitalClock");
+
+    // schauen ob schon was gespeichert ist
+    var gespeichert = TimeModel.load();
+    if (gespeichert != null) {
+        var hh = gespeichert.h < 10 ? "0" + gespeichert.h : "" + gespeichert.h;
+        var mm = gespeichert.m < 10 ? "0" + gespeichert.m : "" + gespeichert.m;
+        var ss = gespeichert.s < 10 ? "0" + gespeichert.s : "" + gespeichert.s;
+        document.getElementById("savedTime").textContent = "gespeichert: " + hh + ":" + mm + ":" + ss;
+    }
+
+    document.getElementById("saveBtn").addEventListener("click", function() {
+        TimeModel.save();
+        var h = TimeModel.getHours();
+        var m = TimeModel.getMinutes();
+        var s = TimeModel.getSeconds();
+        var hh = h < 10 ? "0" + h : "" + h;
+        var mm = m < 10 ? "0" + m : "" + m;
+        var ss = s < 10 ? "0" + s : "" + s;
+        document.getElementById("savedTime").textContent = "gespeichert: " + hh + ":" + mm + ":" + ss;
+    });
+
+    tick();
+    setInterval(tick, 1000);
+});
