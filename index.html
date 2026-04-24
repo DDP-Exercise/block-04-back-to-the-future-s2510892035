@@ -6,6 +6,16 @@
     <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
+    <div id="app">
+        <div id="digitalClock">00:00:00</div>
+        <canvas id="analogClock" width="200" height="200"></canvas>
+        <button id="saveBtn">Zeit speichern</button>
+        <span id="savedTime"></span>
+    </div>
 
+    <script src="./js/model_time.js"></script>
+    <script src="./js/view_analogue.js"></script>
+    <script src="./js/view_digital.js"></script>
+    <script src="./js/controller.js"></script>
 </body>
 </html>
