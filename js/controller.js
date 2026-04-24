@@ -39,9 +39,9 @@
 function tick() {
     TimeModel.update();
 
-    var h = TimeModel.getHours();
-    var m = TimeModel.getMinutes();
-    var s = TimeModel.getSeconds();
+    let h = TimeModel.getHours();
+    let m = TimeModel.getMinutes();
+    let s = TimeModel.getSeconds();
 
     AnalogueView.render(h, m, s);
     DigitalView.render(h, m, s);
@@ -52,22 +52,22 @@ document.addEventListener("DOMContentLoaded", function() {
     DigitalView.init("digitalClock");
 
     // schauen ob schon was gespeichert ist
-    var gespeichert = TimeModel.load();
+    let gespeichert = TimeModel.load();
     if (gespeichert != null) {
-        var hh = gespeichert.h < 10 ? "0" + gespeichert.h : "" + gespeichert.h;
-        var mm = gespeichert.m < 10 ? "0" + gespeichert.m : "" + gespeichert.m;
-        var ss = gespeichert.s < 10 ? "0" + gespeichert.s : "" + gespeichert.s;
+        let hh = gespeichert.h < 10 ? "0" + gespeichert.h : "" + gespeichert.h;
+        let mm = gespeichert.m < 10 ? "0" + gespeichert.m : "" + gespeichert.m;
+        let ss = gespeichert.s < 10 ? "0" + gespeichert.s : "" + gespeichert.s;
         document.getElementById("savedTime").textContent = "gespeichert: " + hh + ":" + mm + ":" + ss;
     }
 
     document.getElementById("saveBtn").addEventListener("click", function() {
         TimeModel.save();
-        var h = TimeModel.getHours();
-        var m = TimeModel.getMinutes();
-        var s = TimeModel.getSeconds();
-        var hh = h < 10 ? "0" + h : "" + h;
-        var mm = m < 10 ? "0" + m : "" + m;
-        var ss = s < 10 ? "0" + s : "" + s;
+        let h = TimeModel.getHours();
+        let m = TimeModel.getMinutes();
+        let s = TimeModel.getSeconds();
+        let hh = h < 10 ? "0" + h : "" + h;
+        let mm = m < 10 ? "0" + m : "" + m;
+        let ss = s < 10 ? "0" + s : "" + s;
         document.getElementById("savedTime").textContent = "gespeichert: " + hh + ":" + mm + ":" + ss;
     });
 

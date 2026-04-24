@@ -1,12 +1,12 @@
 "use strict";
 
-var TimeModel = {
+const TimeModel = {
     stunde: 0,
     minute: 0,
     sekunde: 0,
 
     update: function() {
-        var jetzt = new Date();
+        let jetzt = new Date();
         this.stunde = jetzt.getHours();
         this.minute = jetzt.getMinutes();
         this.sekunde = jetzt.getSeconds();
@@ -25,7 +25,7 @@ var TimeModel = {
     },
 
     save: function() {
-        var zeitObjekt = {
+        let zeitObjekt = {
             h: this.stunde,
             m: this.minute,
             s: this.sekunde
@@ -34,7 +34,7 @@ var TimeModel = {
     },
 
     load: function() {
-        var daten = localStorage.getItem("gespeicherteZeit");
+        let daten = localStorage.getItem("gespeicherteZeit");
         if (daten == null) {
             return null;
         }

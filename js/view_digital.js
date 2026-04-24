@@ -1,6 +1,6 @@
 "use strict";
 
-var DigitalView = {
+const DigitalView = {
     el: null,
 
     init: function(id) {
@@ -9,9 +9,9 @@ var DigitalView = {
 
     render: function(h, m, s) {
         // zweistellig machen falls einstellig
-        var hh = h < 10 ? "0" + h : "" + h;
-        var mm = m < 10 ? "0" + m : "" + m;
-        var ss = s < 10 ? "0" + s : "" + s;
+        let hh = h < 10 ? "0" + h : "" + h;
+        let mm = m < 10 ? "0" + m : "" + m;
+        let ss = s < 10 ? "0" + s : "" + s;
 
         this.el.textContent = hh + ":" + mm + ":" + ss;
     }

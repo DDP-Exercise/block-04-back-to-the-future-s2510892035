@@ -1,6 +1,6 @@
 "use strict";
 
-var AnalogueView = {
+const AnalogueView = {
     canvas: null,
     ctx: null,
 
@@ -10,9 +10,9 @@ var AnalogueView = {
     },
 
     render: function(h, m, s) {
-        var ctx = this.ctx;
-        var mitte = this.canvas.height / 2;
-        var radius = mitte - 10;
+        let ctx = this.ctx;
+        let mitte = this.canvas.height / 2;
+        let radius = mitte - 10;
 
         ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
@@ -26,8 +26,8 @@ var AnalogueView = {
         ctx.stroke();
 
         // die 12 striche
-        for (var i = 0; i < 12; i++) {
-            var winkel = (i / 12) * Math.PI * 2 - Math.PI / 2;
+        for (let i = 0; i < 12; i++) {
+            let winkel = (i / 12) * Math.PI * 2 - Math.PI / 2;
             ctx.beginPath();
             ctx.moveTo(
                 mitte + Math.cos(winkel) * (radius - 8),
@@ -44,7 +44,7 @@ var AnalogueView = {
 
         // stundenzeiger
         // stunden gehen von 0-12 also mal 2 damit der winkel stimmt
-        var hWinkel = ((h % 12) / 12 * Math.PI * 2) + (m / 60 * (Math.PI * 2 / 12)) - Math.PI / 2;
+        let hWinkel = ((h % 12) / 12 * Math.PI * 2) + (m / 60 * (Math.PI * 2 / 12)) - Math.PI / 2;
         ctx.beginPath();
         ctx.moveTo(mitte, mitte);
         ctx.lineTo(mitte + Math.cos(hWinkel) * (radius * 0.55), mitte + Math.sin(hWinkel) * (radius * 0.55));
@@ -54,7 +54,7 @@ var AnalogueView = {
         ctx.stroke();
 
         // minutenzeiger
-        var mWinkel = (m / 60 * Math.PI * 2) + (s / 3600 * Math.PI * 2) - Math.PI / 2;
+        let mWinkel = (m / 60 * Math.PI * 2) + (s / 3600 * Math.PI * 2) - Math.PI / 2;
         ctx.beginPath();
         ctx.moveTo(mitte, mitte);
         ctx.lineTo(mitte + Math.cos(mWinkel) * (radius * 0.75), mitte + Math.sin(mWinkel) * (radius * 0.75));
@@ -64,7 +64,7 @@ var AnalogueView = {
         ctx.stroke();
 
         // sekundenzeiger
-        var sWinkel = (s / 60 * Math.PI * 2) - Math.PI / 2;
+        let sWinkel = (s / 60 * Math.PI * 2) - Math.PI / 2;
         ctx.beginPath();
         ctx.moveTo(mitte, mitte);
         ctx.lineTo(mitte + Math.cos(sWinkel) * (radius * 0.88), mitte + Math.sin(sWinkel) * (radius * 0.88));
